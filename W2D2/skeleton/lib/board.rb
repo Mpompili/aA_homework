@@ -35,9 +35,10 @@ class Board
         cup_idx += 1
         cup_idx = 0 if cup_idx > 13
         # places stones in the correct current player's cups
-        if cup_idx == 6
+        case cup_idx
+        when 6
           @cups[6] << stones.pop if current_player_name == @name1
-        elsif cup_idx == 13
+        when 13
           @cups[13] << stones.pop if current_player_name == @name2
         else
           @cups[cup_idx] << stones.pop
@@ -85,6 +86,9 @@ class Board
   end
 
   def one_side_empty?
+    cups[0..5].all?(&:empty?) ||
+    cups[7..12].all?(&:empty?)
+
   end
 
   def winner
