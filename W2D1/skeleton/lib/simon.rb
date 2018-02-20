@@ -1,3 +1,4 @@
+require 'colorize'
 class Simon
   COLORS = %w(red blue green yellow)
 
@@ -11,7 +12,7 @@ class Simon
 
   def play
     until game_over
-      take_turn 
+      take_turn
     end
     game_over_message
     reset_game
@@ -27,7 +28,7 @@ class Simon
   def show_sequence
     add_random_color
     @seq.each_with_index do |color, i|
-      p "#{i+1}: #{color}"
+      puts "#{i+1}: #{color}".colorize(:"#{color}")
       sleep(1)
       system('clear')
     end
