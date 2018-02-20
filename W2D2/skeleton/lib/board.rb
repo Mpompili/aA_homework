@@ -92,5 +92,15 @@ class Board
   end
 
   def winner
+    p1_count = cups[6].count
+    p2_count = cups[13].count
+    case p1_count<=>p2_count
+    when 0
+      :draw
+    when 1
+      @name1
+    else
+      @name2
+    end
   end
 end
